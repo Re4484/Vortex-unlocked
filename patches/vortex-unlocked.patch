@@ -3757,7 +3757,7 @@ diff --git a/src/main/src/downloading/ipc.ts b/src/main/src/downloading/ipc.ts
 index 0520c23..16d5bbf 100644
 --- a/src/main/src/downloading/ipc.ts
 +++ b/src/main/src/downloading/ipc.ts
-@@ -20,12 +20,20 @@
+@@ -20,12 +20,22 @@
  function wireToResolvedResource(wire: WireResolvedResource): ResolvedResource {
    const probe = wireToResolvedEndpoint(wire.probeEndpoint);
    if (!wire.chunkEndpoints?.length) return probe;
@@ -3777,7 +3777,9 @@ index 0520c23..16d5bbf 100644
 +      const attempt = attempts.get(chunk.index) ?? 0;
 +      attempts.set(chunk.index, attempt + 1);
 +      const idx = (chunk.index + attempt) % wire.chunkEndpoints!.length;
-+      return Promise.resolve(wireToResolvedEndpoint(wire.chunkEndpoints![idx]));
++      return Promise.resolve(
++        wireToResolvedEndpoint(wire.chunkEndpoints?.[idx] ?? wire.probeEndpoint),
++      );
 +    },
    };
  }
