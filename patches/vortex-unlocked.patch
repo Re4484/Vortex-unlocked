@@ -3542,7 +3542,7 @@ index b74a8a5..fa4cd0b 100644
      this.#currentMaxParallelDownloads = maxParallelDownloads;
      this.#currentMaxBandwidth = maxBandwidth;
 -    this.#syncDownloadSettings(maxParallelDownloads, maxBandwidth);
-+    this.#effectiveConcurrency = Math.max(1, Math.min(maxParallelDownloads, 2));
++    this.#effectiveConcurrency = Math.max(1, maxParallelDownloads);
 +    this.#syncDownloadSettings(this.#effectiveConcurrency, maxBandwidth);
  
      this.#api.store.subscribe(() => {

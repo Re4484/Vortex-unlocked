@@ -10,10 +10,10 @@ Unlocked by [Chaython](https://github.com/Chaython).
   dashboard dashlet, free/premium comparison modal, membership status badge and premium
   indicators are all gone.
 - **No client-side premium gates** - parallel download threads, "Update All", collection
-  bulk-install, one-click dependency installs and generated nxm downloads are available to
-  every account. Note that anything the Nexus API itself enforces server-side (such as which
-  CDN link your account gets) is still decided by the server - when the API refuses, Vortex
-  Unlocked transparently falls back to the website link round-trip.
+  bulk-install, one-click dependency installs and generated nxm downloads are not blocked by
+  account membership in Vortex. Nexus still enforces server-side limits, including download
+  speed and link eligibility. If the API refuses a link, Vortex queues the download for the
+  standard website-authorisation round-trip.
 - **Hide the Dashboard tab** - new toggle under Settings -> Interface ("Hide Dashboard tab"),
   applied live, no restart needed.
 - **Usage analytics / event reporting disabled** - no Mixpanel session, no OTel export.
